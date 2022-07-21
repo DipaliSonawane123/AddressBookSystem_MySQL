@@ -1,0 +1,32 @@
+ADDRESSBOOK_SERVICE
+#Uc 1 Ability to create a Address Book Service DB
+
+create database AddressBook_Services;
+    Query OK, 1 row affected (0.27 sec)
+
+show databases;
++----------------------+
+| Database             |
++----------------------+
+| addressbook_services |
+| information_schema   |
+| mysql                |
+| payroll_service      |
+| payroll_services     |
+| payroll_services1    |
+| performance_schema   |
+| sys                  |
++----------------------+
+8 rows in set (0.09 sec)
+
+
+ use AddressBook_Services;
+Database changed
+select database();
++----------------------+
+| database()           |
++----------------------+
+| addressbook_services |
++----------------------+
+1 row in set (0.00 sec)
+
