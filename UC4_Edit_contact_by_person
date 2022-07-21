@@ -1,0 +1,100 @@
+ADDRESSBOOK_SERVICE
+#Uc 1 Ability to create a Address Book Service DB
+
+create database AddressBook_Services;
+    Query OK, 1 row affected (0.27 sec)
+
+show databases;
++----------------------+
+| Database             |
++----------------------+
+| addressbook_services |
+| information_schema   |
+| mysql                |
+| payroll_service      |
+| payroll_services     |
+| payroll_services1    |
+| performance_schema   |
+| sys                  |
++----------------------+
+8 rows in set (0.09 sec)
+
+
+ use AddressBook_Services;
+Database changed
+select database();
++----------------------+
+| database()           |
++----------------------+
+| addressbook_services |
++----------------------+
+1 row in set (0.00 sec)
+
+#UC 2 Ability to create a Address Book Table with first and last names, address, city,
+
+state, zip, phone number and email as its attributes
+
+ CREATE TABLE Address_Book1
+    -> (
+    ->  first_name varchar(255) not null,
+    ->      last_name varchar(255) not null,
+    ->     address varchar(255) not null,
+    ->      city varchar(100) not null,
+    ->      state varchar(100) not null,
+    ->      zip int not null,
+    ->      phone_number varchar(255) not null,
+    ->      email varchar(255));
+Query OK, 0 rows affected (0.67 sec)
+
+
+ describe Address_Book1;
++--------------+--------------+------+-----+---------+-------+
+| Field        | Type         | Null | Key | Default | Extra |
++--------------+--------------+------+-----+---------+-------+
+| first_name   | varchar(255) | NO   |     | NULL    |       |
+| last_name    | varchar(255) | NO   |     | NULL    |       |
+| address      | varchar(255) | NO   |     | NULL    |       |
+| city         | varchar(100) | NO   |     | NULL    |       |
+| state        | varchar(100) | NO   |     | NULL    |       |
+| zip          | int          | NO   |     | NULL    |       |
+| phone_number | varchar(255) | NO   |     | NULL    |       |
+| email        | varchar(255) | YES  |     | NULL    |       |
++--------------+--------------+------+-----+---------+-------+
+8 rows in set (0.00 sec)
+
+#UC 3 Ability to insert new Contacts to Address Book
+
+insert into Address_Book1 (first_name, last_name, address, city, state, zip,phone_number,email) values
+    ->('Dipali', 'Sonawane', 'pink towers', 'Jalgaon', 'Maharashtra', 425001, '9066375678', 'dips123@gmail.com'),
+    ->  ('Dipti', 'Shewale', 'nana towers', 'Jalgaon', 'Maharashtra', 425001, '9066377678', 'dipsh123@gmail.com'),
+    ->  ('katarin', 'kate', 'hologram appartments', 'agra','delhi',780009,'4566767666','katarin@gmail.com'),
+    ->  ('Nari', 'Yadav','devaki towers','mumbai','maharastra',232415,7654425567,'nari@gmail.com');
+Query OK, 4 rows affected (0.12 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+ select * from Address_Book1;
++------------+-----------+----------------------+---------+-------------+--------+--------------+--------------------+
+| first_name | last_name | address              | city    | state       | zip    | phone_number | email              |
++------------+-----------+----------------------+---------+-------------+--------+--------------+--------------------+
+| Dipali     | Sonawane  | pink towers          | Jalgaon | Maharashtra | 425001 | 9066375678   | dips123@gmail.com  |
+| Dipti      | Shewale   | nana towers          | Jalgaon | Maharashtra | 425001 | 9066377678   | dipsh123@gmail.com |
+| katarin    | kate      | hologram appartments | agra    | delhi       | 780009 | 4566767666   | katarin@gmail.com  |
+| Nari       | Yadav     | devaki towers        | mumbai  | maharastra  | 232415 | 7654425567   | nari@gmail.com     |
++------------+-----------+
+
+#UC 4 Ability to edit existing contact person using their name
+
+ update Address_Book1 set address ='dips house' where first_name ='Nari';
+Query OK, 1 row affected (0.05 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+ select * from Address_Book1;
++------------+-----------+----------------------+---------+-------------+--------+--------------+--------------------+
+| first_name | last_name | address              | city    | state       | zip    | phone_number | email              |
++------------+-----------+----------------------+---------+-------------+--------+--------------+--------------------+
+| Dipali     | Sonawane  | pink towers          | Jalgaon | Maharashtra | 425001 | 9066375678   | dips123@gmail.com  |
+| Dipti      | Shewale   | nana towers          | Jalgaon | Maharashtra | 425001 | 9066377678   | dipsh123@gmail.com |
+| katarin    | kate      | hologram appartments | agra    | delhi       | 780009 | 4566767666   | katarin@gmail.com  |
+| Nari       | Yadav     | dips house           | mumbai  | maharastra  | 232415 | 7654425567   | nari@gmail.com     |
++------------+-----------+----------------------+---------+-------------+--------+--------------+--------------------+
+4 rows in set (0.00 sec)
